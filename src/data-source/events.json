@@ -1,0 +1,45 @@
+[
+    {
+        "eventId": "eve1",
+        "eventName":"event 1",
+        "eventDate":"23-May-2020",
+        "seatsAvailable":3,
+        "eventLogo":"https://www.freelogodesign.org/Content/img/logo-samples/celtica.png"
+    },
+    {
+        "eventId": "eve2",
+        "eventName":"event 2",
+        "eventDate":"23-May-2020",
+        "seatsAvailable":23,
+        "eventLogo":"https://cdn.worldvectorlogo.com/logos/tiktok-logo.svg"
+    },
+    {
+        "eventId": "eve3",
+        "eventName":"event 3",
+        "eventDate":"23-May-2020",
+        "seatsAvailable":2,
+        "eventLogo":"https://www.freelogodesign.org/Content/img/logo-samples/camilla.png"
+    },
+    {
+        "eventId": "eve4",
+        "eventName":"event 4",
+        "eventDate":"23-May-2020",
+        "seatsAvailable":5,
+        "eventLogo":"https://www.freelogodesign.org/Content/img/logo-samples/camilla.png"
+    },
+    {
+        "eventId": "eve5",
+        "eventName":"event 5",
+        "eventDate":"23-May-2020",
+        "seatsAvailable":8,
+        "eventLogo":"https://www.freelogodesign.org/Content/img/logo-samples/camilla.png"
+    },
+    {
+        "eventId": "eve6",
+        "eventName":"event 6",
+        "eventDate":"23-May-2020",
+        "seatsAvailable":7,
+        "eventLogo":"https://www.freelogodesign.org/Content/img/logo-samples/camilla.png"
+    }
+    
+]
