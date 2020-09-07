@@ -3,7 +3,7 @@
         "eventId": "eve1",
         "eventName":"event 1",
         "eventDate":"23-May-2020",
-        "seatsAvailable":3,
+        "seatsAvailable":5,
         "eventLogo":"https://www.freelogodesign.org/Content/img/logo-samples/celtica.png"
     },
     {

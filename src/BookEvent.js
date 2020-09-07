@@ -12,6 +12,7 @@ import { useHistory } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import { withRouter } from "react-router-dom";
 import { saveSelectedEvent, saveEvents } from "./actions";
+import config from './config/config.json';
 
 import {
   InfoCircleOutlined,
@@ -124,8 +125,11 @@ class BookEvent extends React.Component {
     if(errorKeys.length){
       errorKeys.forEach(element =>{
         if(element!='attendees')
-        if(this.state.errors[element]){
+        {
+          if(this.state.errors[element]){
           validForm = false;
+          this.setState({element:'Please enter '+element})
+         } 
         }
       })
     }
@@ -155,6 +159,8 @@ class BookEvent extends React.Component {
     })
 
     console.log({3:validForm})
+
+    console.log(finalData)
     
     if(!validForm){
       this.showModal();
@@ -167,7 +173,7 @@ class BookEvent extends React.Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(finalData),
     };
-    fetch("/booking/createBooking", requestOptions)
+    fetch(config.url+"/booking/createBooking", requestOptions)
       .then((response) => response.json())
       .then((data) => {
         this.setState({'successModalVisible':true});
@@ -248,7 +254,7 @@ class BookEvent extends React.Component {
       stateData["errors"]["attendees" + index] =
         "Only letters and spaces are allowed";
     } else if (!e.target.value) {
-      stateData["errors"]["attendees" + index] = "Please enter your name";
+      stateData["errors"]["attendees"][index] = "Please enter your name";
     }
     this.setState(stateData);
   };
@@ -305,6 +311,11 @@ class BookEvent extends React.Component {
                         </Tooltip>
                       }
                     />
+                    {
+                      this.state.errors['attendees'][0] && 
+                      <p class="error-text">Please enter name</p>
+                    }
+                    
                   </div>
                 </div>
                 <div className={"form-group"}>
@@ -325,6 +336,11 @@ class BookEvent extends React.Component {
                         </Tooltip>
                       }
                     />
+                   
+                    {
+                      this.state.errors['email'] && 
+                      <p class="error-text">Please enter valid email address</p>
+                    }
                   </div>
                 </div>
                 <div className={"form-group"}>
@@ -343,6 +359,10 @@ class BookEvent extends React.Component {
                         </Tooltip>
                       }
                     />
+                     {
+                      this.state.errors['phoneNumber'] && 
+                      <p class="error-text">Please enter valid phone number</p>
+                    }
                   </div>
                 </div>
                 <div className={"form-group"}>
@@ -362,8 +382,15 @@ class BookEvent extends React.Component {
                     </Select>
                   </div>
                 </div>
+               
+                {
+                  this.state.attendees.length > this.state.event.seatsAvailable && 
+                  <p className="error-text">Number of seats selected is more than available seats</p>
+                }
 
-                {this.state.attendees.slice(1).map((attendee, index) => {
+                {
+                !(this.state.attendees.length > this.state.event.seatsAvailable) &&
+                this.state.attendees.slice(1).map((attendee, index) => {
                   return (
                     <div className={"form-group"} key={index}>
                       <label>Name of Attendee {index + 2}:</label>
@@ -384,6 +411,10 @@ class BookEvent extends React.Component {
                             </Tooltip>
                           }
                         />
+                         {
+                      this.state.errors['attendees'][index+1] && 
+                      <p class="error-text">Please enter name</p>
+                    }
                       </div>
                     </div>
                   );

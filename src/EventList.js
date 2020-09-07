@@ -9,6 +9,8 @@ import { Input } from "antd";
 import { Card } from "antd";
 import { Row, Col } from "antd";
 import { Button } from "antd";
+import config from './config/config.json';
+
 const { Search } = Input;
 
 const history = createBrowserHistory();
@@ -29,7 +31,7 @@ class EventList extends React.Component {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     };
-    fetch("/booking/getBookings", requestOptions)
+    fetch(config.url+"/booking/getBookings", requestOptions)
       .then((response) => response.json())
       .then((data) => {
         data = data.data;
